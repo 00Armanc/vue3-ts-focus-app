@@ -6,13 +6,15 @@ export const editTime = (time: number) => {
     const minute = Math.floor(time/60)
     const second = Math.floor(time % 60)+1
 
-    const setMin = minute < 10 ? "0" : ""
+    const threeNum = minute > 99 ? Math.floor((minute)/60) : minute
+
+    const setMin = threeNum < 10 ? "0" : ""
     const setSec = second < 10 ? "0" : ""
 
-    return `${setMin}${minute}:${setSec}${second}`
+    return `${setMin}${threeNum}:${setSec}${second}`
 }
 export const editBarWidth = (time: number, time1: number) => {
     const timer = time / time1 * 100 + '%'
-    console.log(time + " " + time1)
+    // console.log(time + " " + time1)
     return timer
 }

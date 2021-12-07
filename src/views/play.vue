@@ -11,10 +11,7 @@
                 </button>
             </router-link>
             <div class="play-area">
-                <div class="play-controls">
-                    <SoundData />
-                    <VideoControlsButtons :currentSound="currentSound" />
-                </div>
+                <SoundData />
             </div>
         </div>
         <!-- Right side -->
@@ -29,21 +26,20 @@
 <script lang="ts">
 import { computed, defineAsyncComponent, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
 
 export default defineComponent({
     name: "Play",
     components: {
-        VideoControlsButtons: defineAsyncComponent(() => import('@/components/VideoControlsButtons.vue')),
+        // VideoControlsButtons: defineAsyncComponent(() => import('@/components/VideoControlsButtons.vue')),
         SoundData: defineAsyncComponent(() => import('@/components/SoundData.vue')),
         Sound: defineAsyncComponent(() => import('@/components/Sound.vue')),
     },
     setup() {
         const router = useRoute()
-        const store = useStore()
+        // const store = useStore()
 
         const id = Number(router.params.id)-1
-        const currentSound = store.state.sounds[id]
 
         const backToHome = computed(() => {
             return "/"
@@ -51,7 +47,6 @@ export default defineComponent({
 
         return { 
             id,
-            currentSound,
             backToHome, 
         }
     },
@@ -73,18 +68,18 @@ export default defineComponent({
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: calc(100% - 500px);
-    height: calc(100vh - 65px);
+    width: 60%;
+    position: relative;
 }
 .back-img {
-    width: 70%;
-    height: 50vh;
-    margin-top: 50px;
+    width: 100%;
+    height: 65vh;
+    box-shadow: 20px 20px 20px 20px rgb(70, 68, 68) ;
 }
 .backToHome {
     width: 50px;
     height: 50px;
-    position: absolute;
+    position: fixed;
     top: 75px;
     left: 10px;
 
@@ -96,20 +91,15 @@ export default defineComponent({
     background: rgb(184, 182, 182);
 }
 .play-area {
-    width: 70%;
-    background: black;
-    height: 145px;
+    width: 100%;
+    height: 80px;
     color: #fff;
+    position: absolute;
+    bottom: 0;
 }
 .play-controls {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    border: 3px solid rgb(202, 201, 201);
-
+    margin-bottom: 50px;
+    position: relative;
 }
 .extra-sound {
     border-left: 1px solid rgb(187, 184, 184);

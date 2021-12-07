@@ -35,7 +35,7 @@ import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
 export default defineComponent({
-    props: ['currentSound'],
+    // props: ['currentSound'],
     setup() {
         const store = useStore()
         const route = useRoute()
@@ -74,24 +74,25 @@ export default defineComponent({
 
 <style scoped>
 .play-controls-buttons {
-    padding-left: 100px;
+    /* padding-left: 100px;
     padding-right: 100px;
-    padding-bottom: 15px;
-    width: 50%;
-    margin: 0 auto;
-
+    padding-bottom: 15px; */
+    /* padding-bottom: 15px; */
+    /* width: 50%; */
+    /* margin: 0 auto; */
+    /* margin: 0 0 10px 20px; */
 }
 button {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: none;
 }
 button > svg {
     fill: white;
 }
 .action {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 
 }
 </style>
